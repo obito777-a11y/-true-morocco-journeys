@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tours &amp; Excursions | True Morocco Journeys</title>
+<meta name="description" content="Browse our full collection of curated Morocco tours — Sahara 4x4 expeditions, Atlas treks, imperial city tours and luxury desert glamping.">
+<link rel="icon" type="image/png" href="images/favicon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ============================================================ NAVBAR -->
+<nav class="navbar navbar-expand-lg tmj-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <img src="images/logo.png" alt="True Morocco Journeys logo">
+      <span>True Morocco<br>Journeys</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="mainNav">
+      <ul class="navbar-nav align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" data-page="index.html" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" data-page="tours.html" href="tours.html">Tours &amp; Excursions</a></li>
+        <li class="nav-item"><a class="nav-link" data-page="destinations.html" href="destinations.html">Destinations</a></li>
+        <li class="nav-item"><a class="nav-link" data-page="about.html" href="about.html">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" data-page="blog.html" href="blog.html">Blog</a></li>
+        <li class="nav-item"><a class="nav-link" data-page="contact.html" href="contact.html">Contact</a></li>
+        <li class="nav-item"><a class="btn btn-primary" href="contact.html">Book Now</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ======================================================= PAGE HEADER == -->
+<header class="page-header" style="background-image:url('images/hero/hero-tours.jpg');">
+  <div class="container">
+    <nav aria-label="breadcrumb" class="breadcrumb mb-2">
+      <a href="index.html">Home</a><span class="mx-2">/</span><span class="current">Tours &amp; Excursions</span>
+    </nav>
+    <h1>Tours &amp; Excursions</h1>
+    <p>Every itinerary below can flex to your dates, pace and group size — these are starting points, not fixed scripts.</p>
+  </div>
+</header>
+
+<div class="container">
+  <div class="filter-bar reveal">
+    <div class="row g-3 align-items-center">
+      <div class="col-lg-7">
+        <div class="d-flex flex-wrap gap-2">
+          <button class="filter-chip active" data-filter="all">All Tours</button>
+          <button class="filter-chip" data-filter="desert">Desert &amp; Dunes</button>
+          <button class="filter-chip" data-filter="city">Imperial Cities</button>
+          <button class="filter-chip" data-filter="mountain">Mountains</button>
+          <button class="filter-chip" data-filter="coast">Coast</button>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="position-relative">
+          <input type="search" id="tourSearch" class="form-control ps-5" placeholder="Search tours by name&hellip;" aria-label="Search tours">
+          <i class="bi bi-search position-absolute top-50 start-0 translate-middle-y ms-3 text-muted"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =========================================================== TOUR GRID -->
+<section class="section-pad">
+  <div class="container">
+    <div class="row g-4" id="tourGrid">
+
+      <div class="col-md-6 col-lg-4 reveal" data-category="desert" data-title="Sahara Desert 4x4 Expedition">
+        <article class="tour-card">
+          <div class="card-img">
+            <span class="badge-duration"><i class="bi bi-clock"></i> 3 Days</span>
+            <span class="badge-price">From &euro;450</span>
+            <img src="images/tours/sahara-4x4.jpg" alt="4x4 crossing Sahara dunes at sunset">
+          </div>
+          <div class="card-body">
+            <div class="card-dest">Merzouga, Sahara</div>
+            <h3><a href="tour-detail.html">Sahara Desert 4x4 Expedition</a></h3>
+            <p>Cross the Erg Chebbi dunes by 4x4, ride camels into camp and sleep under a sky thick with stars.</p>
+            <div class="card-foot">
+              <span class="price-tag">From<br><b>&euro;450</b></span>
+              <a href="tour-detail.html" class="btn btn-outline-navy btn-sm-pill">View Details</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-4 reveal reveal-delay-1" data-category="city" data-title="Marrakesh Cultural Immersion">
+        <article class="tour-card">
+          <div class="card-img">
+            <span class="badge-duration"><i class="bi bi-clock"></i> 4 Days</span>
+            <span class="badge-price">From &euro;680</span>
+            <img src="images/tours/marrakesh-cultural.jpg" alt="Marrakesh medina at dusk">
+          </div>
+          <div class="card-body">
+            <div class="card-dest">Marrakesh</div>
+            <h3><a href="tour-detail.html">Marrakesh Cultural Immersion</a></h3>
+            <p>Wander the souks, share mint tea with artisans, and uncover riads behind plain medina doors.</p>
+            <div class="card-foot">
+              <span class="price-tag">From<br><b>&euro;680</b></span>
+              <a href="tour-detail.html" class="btn btn-outline-navy btn-sm-pill">View Details</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-4 reveal reveal-delay-2" data-category="mountain" data-title="Atlas Mountains Trekking">
+        <article class="tour-card">
+          <div class="card-img">
+            <span class="badge-duration"><i class="bi bi-clock"></i> 6 Days</span>
+            <span class="badge-price">From &euro;980</span>
+            <img src="images/tours/atlas-trek.jpg" alt="Trekkers in the Atlas Mountains">
+          </div>
+          <div class="card-body">
+            <div class="card-dest">High Atlas Mountains</div>
+            <h3><a href="tour-detail.html">Atlas Mountains Trekking</a></h3>
+            <p>Trek between Berber villages, share meals with mountain families and summit Toubkal's foothills.</p>
+            <div class="card-foot">
+              <span class="price-tag">From<br><b>&euro;980</b></span>
+              <a href="tour-detail.html" class="btn btn-outline-navy btn-sm-pill">View Details</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-4 reveal" data-category="city" data-title="Chefchaouen Blue City Tour">
+        <article class="tour-card">
+          <div class="card-img">
+            <span class="badge-duration"><i class="bi bi-clock"></i> 2 Days</span>
+            <span class="badge-price">From &euro;320</span>
+            <img src="images/tours/chefchaouen-blue.jpg" alt="Blue-painted alley in Chefchaouen">
+          </div>
+          <div class="card-body">
+            <div class="card-dest">Chefchaouen</div>
+            <h3><a href="tour-detail.html">Chefchaouen Blue City Tour</a></h3>
+            <p>Lose yourself in the indigo alleyways of the Rif Mountains' most photogenic town.</p>
+            <div class="card-foot">
+              <span class="price-tag">From<br><b>&euro;320</b></span>
+              <a href="tour-detail.html" class="btn btn-outline-navy btn-sm-pill">View Details</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-4 reveal reveal-delay-1" data-category="city" data-title="Fes Imperial City Discovery">
+        <article class="tour-card">
+          <div class="card-img">
+            <span class="badge-duration"><i class="bi bi-clock"></i> 3 Days</span>
+            <span class="badge-price">From &euro;520</span>
+            <img src="images/tours/fes-imperial.jpg" alt="Fes medina rooftops">
+          </div>
+          <div class="card-body">
+            <div class="card-dest">Fes</div>
+            <h3><a href="tour-detail.html">Fes Imperial City Discovery</a></h3>
+            <p>Morocco's oldest imperial city — tanneries, madrasas, and the world's largest car-free urban area.</p>
+            <div class="card-foot">
+              <span class="price-tag">From<br><b>&euro;520</b></span>
+              <a href="tour-detail.html" class="btn btn-outline-navy btn-sm-pill">View Details</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-4 reveal reveal-delay-2" data-category="coast" data-title="Agadir Coastal Escape">
+        <article class="tour-card">
+          <div class="card-img">
+            <span class="badge-duration"><i class="bi bi-clock"></i> 3 Days</span>
+            <span class="badge-price">From &euro;410</span>
+            <img src="images/tours/agadir-coastal.jpg" alt="Agadir coastline">
+          </div>
+          <div class="card-body">
+            <div class="card-dest">Agadir</div>
+            <h3><a href="tour-detail.html">Agadir Coastal Escape</a></h3>
+            <p>Surf breaks, seafood shacks and long Atlantic sunsets on Morocco's southern coast.</p>
+            <div class="card-foot">
+              <span class="price-tag">From<br><b>&euro;410</b></span>
+              <a href="tour-detail.html" class="btn btn-outline-navy btn-sm-pill">View Details</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-4 reveal" data-category="coast" data-title="Essaouira Day Trip">
+        <article class="tour-card">
+          <div class="card-img">
+            <span class="badge-duration"><i class="bi bi-clock"></i> 1 Day</span>
+            <span class="badge-price">From &euro;95</span>
+            <img src="images/tours/essaouira-day.jpg" alt="Essaouira fishing port">
+          </div>
+          <div class="card-body">
+            <div class="card-dest">Essaouira</div>
+            <h3><a href="tour-detail.html">Essaouira Day Trip</a></h3>
+            <p>A windswept fishing port with Portuguese ramparts, blue boats, and the freshest grilled sardines you'll have.</p>
+            <div class="card-foot">
+              <span class="price-tag">From<br><b>&euro;95</b></span>
+              <a href="tour-detail.html" class="btn btn-outline-navy btn-sm-pill">View Details</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-4 reveal reveal-delay-1" data-category="desert" data-title="Luxury Desert Glamping">
+        <article class="tour-card">
+          <div class="card-img">
+            <span class="badge-duration"><i class="bi bi-clock"></i> 2 Days</span>
+            <span class="badge-price">From &euro;390</span>
+            <img src="images/tours/desert-glamping.jpg" alt="Luxury glamping tent at night in the Sahara">
+          </div>
+          <div class="card-body">
+            <div class="card-dest">Erg Chigaga</div>
+            <h3><a href="tour-detail.html">Luxury Desert Glamping</a></h3>
+            <p>En-suite tents, private chefs and total silence — desert camping reimagined in quiet comfort.</p>
+            <div class="card-foot">
+              <span class="price-tag">From<br><b>&euro;390</b></span>
+              <a href="tour-detail.html" class="btn btn-outline-navy btn-sm-pill">View Details</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-4 reveal reveal-delay-2" data-category="city" data-title="Casablanca City Highlights">
+        <article class="tour-card">
+          <div class="card-img">
+            <span class="badge-duration"><i class="bi bi-clock"></i> 1 Day</span>
+            <span class="badge-price">From &euro;120</span>
+            <img src="images/tours/casablanca-city.jpg" alt="Hassan II Mosque in Casablanca">
+          </div>
+          <div class="card-body">
+            <div class="card-dest">Casablanca</div>
+            <h3><a href="tour-detail.html">Casablanca City Highlights</a></h3>
+            <p>The Hassan II Mosque, Art Deco boulevards and a modern side of Morocco worth a day of your trip.</p>
+            <div class="card-foot">
+              <span class="price-tag">From<br><b>&euro;120</b></span>
+              <a href="tour-detail.html" class="btn btn-outline-navy btn-sm-pill">View Details</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-4 reveal" data-category="city" data-title="Rabat Imperial History">
+        <article class="tour-card">
+          <div class="card-img">
+            <span class="badge-duration"><i class="bi bi-clock"></i> 1 Day</span>
+            <span class="badge-price">From &euro;110</span>
+            <img src="images/tours/rabat-imperial.jpg" alt="Rabat Kasbah des Oudayas">
+          </div>
+          <div class="card-body">
+            <div class="card-dest">Rabat</div>
+            <h3><a href="tour-detail.html">Rabat Imperial History</a></h3>
+            <p>The Kasbah des Oudayas, Hassan Tower and Mausoleum — Morocco's capital, properly explained.</p>
+            <div class="card-foot">
+              <span class="price-tag">From<br><b>&euro;110</b></span>
+              <a href="tour-detail.html" class="btn btn-outline-navy btn-sm-pill">View Details</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-4 reveal reveal-delay-1" data-category="desert" data-title="Ouarzazate Kasbah Trail">
+        <article class="tour-card">
+          <div class="card-img">
+            <span class="badge-duration"><i class="bi bi-clock"></i> 2 Days</span>
+            <span class="badge-price">From &euro;340</span>
+            <img src="images/tours/ouarzazate-kasbahs.jpg" alt="Ait Benhaddou kasbah">
+          </div>
+          <div class="card-body">
+            <div class="card-dest">Ouarzazate</div>
+            <h3><a href="tour-detail.html">Ouarzazate Kasbah Trail</a></h3>
+            <p>Ait Benhaddou's mudbrick kasbahs and Morocco's famous "Hollywood of the desert" film studios.</p>
+            <div class="card-foot">
+              <span class="price-tag">From<br><b>&euro;340</b></span>
+              <a href="tour-detail.html" class="btn btn-outline-navy btn-sm-pill">View Details</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-4 reveal reveal-delay-2" data-category="desert" data-title="Merzouga Stargazing Camp">
+        <article class="tour-card">
+          <div class="card-img">
+            <span class="badge-duration"><i class="bi bi-clock"></i> 1 Night</span>
+            <span class="badge-price">From &euro;210</span>
+            <img src="images/tours/merzouga-stars.jpg" alt="Stargazing bivouac camp in the Sahara">
+          </div>
+          <div class="card-body">
+            <div class="card-dest">Merzouga</div>
+            <h3><a href="tour-detail.html">Merzouga Stargazing Camp</a></h3>
+            <p>A single perfect night in a simple desert bivouac, far from any light pollution.</p>
+            <div class="card-foot">
+              <span class="price-tag">From<br><b>&euro;210</b></span>
+              <a href="tour-detail.html" class="btn btn-outline-navy btn-sm-pill">View Details</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+    </div>
+
+    <p id="filterEmptyState" class="text-center text-muted mt-5" style="display:none;">No tours match that search — try another keyword or clear the filters.</p>
+  </div>
+</section>
+
+<!-- ========================================================= CTA BAND === -->
+<section class="pb-5">
+  <div class="container">
+    <div class="cta-band text-center reveal">
+      <h2 class="mb-3">Can't find quite what you're after?</h2>
+      <p class="mb-4 mx-auto" style="max-width:560px;">Most of our best trips are custom-built. Tell us your dates and interests and we'll put together a route just for you.</p>
+      <a href="contact.html" class="btn btn-primary">Request a Custom Itinerary</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ FOOTER == -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-4 col-md-6">
+        <div class="brand"><img src="images/logo.png" alt="True Morocco Journeys logo">True Morocco Journeys</div>
+        <p>A small team of Moroccan-born guides building unforgettable, authentic itineraries since 2012 — from Sahara 4x4 routes to slow city wandering.</p>
+        <div class="social-row">
+          <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" aria-label="TripAdvisor"><i class="bi bi-airplane"></i></a>
+          <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-6">
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="tours.html">Tours &amp; Excursions</a></li>
+          <li><a href="destinations.html">Destinations</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h5>Destinations</h5>
+        <ul>
+          <li><a href="destinations.html">Marrakesh</a></li>
+          <li><a href="destinations.html">Sahara Desert</a></li>
+          <li><a href="destinations.html">Chefchaouen</a></li>
+          <li><a href="destinations.html">Fes</a></li>
+          <li><a href="destinations.html">Agadir &amp; Essaouira</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h5>Contact</h5>
+        <div class="contact-line"><i class="bi bi-geo-alt"></i><span>12 Rue des Orangers, Gueliz, Marrakesh 40000, Morocco</span></div>
+        <div class="contact-line"><i class="bi bi-telephone"></i><span>+212 5 24 00 00 00</span></div>
+        <div class="contact-line"><i class="bi bi-envelope"></i><span>hello@truemoroccojourneys.com</span></div>
+      </div>
+    </div>
+    <div class="footer-bottom d-flex flex-wrap justify-content-between gap-2">
+      <p class="mb-0">&copy; <span id="currentYear"></span> True Morocco Journeys. All rights reserved.</p>
+      <p class="mb-0"><a href="#">Privacy Policy</a> &middot; <a href="#">Terms of Service</a></p>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" aria-label="Back to top"><i class="bi bi-arrow-up"></i></button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

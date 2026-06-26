@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking Request Received — {{ agency_name }}</title>
+</head>
+<body style="margin:0;padding:0;background-color:#f4f1eb;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f4f1eb;">
+    <tr>
+      <td align="center" style="padding:32px 16px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;">
+
+          <!-- Header -->
+          <tr>
+            <td style="background-color:#C8724A;border-radius:8px 8px 0 0;padding:32px;text-align:center;">
+              <h1 style="margin:0;font-size:24px;font-weight:700;color:#ffffff;letter-spacing:0.5px;">
+                {{ agency_name }}
+              </h1>
+              <p style="margin:6px 0 0;font-size:13px;color:#fde8da;letter-spacing:1.5px;text-transform:uppercase;">
+                Authentic Moroccan Journeys
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td style="background-color:#D4A853;height:4px;"></td>
+          </tr>
+
+          <!-- Body -->
+          <tr>
+            <td style="background-color:#ffffff;padding:36px 32px;">
+
+              <h2 style="margin:0 0 8px;font-size:22px;color:#1a2238;font-weight:700;">
+                Your adventure is taking shape, {{ name }}! 🌟
+              </h2>
+              <p style="margin:0 0 24px;font-size:15px;color:#444444;line-height:1.7;">
+                We've received your booking request and our team is already
+                checking availability. Expect to hear from us
+                <strong>within 24 hours</strong>.
+              </p>
+
+              <!-- Booking summary card -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+                     style="background-color:#fdf8f3;border:1px solid #e8d5c0;
+                            border-radius:8px;margin-bottom:28px;">
+                <tr>
+                  <td style="padding:20px 24px;border-bottom:1px solid #e8d5c0;">
+                    <p style="margin:0 0 4px;font-size:11px;font-weight:700;color:#C8724A;
+                               text-transform:uppercase;letter-spacing:0.8px;">Tour</p>
+                    <p style="margin:0;font-size:18px;font-weight:700;color:#1a2238;">
+                      {{ tour_name }}
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:16px 24px;">
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td style="width:50%;padding-right:12px;vertical-align:top;">
+                          <p style="margin:0 0 3px;font-size:11px;font-weight:700;color:#888;
+                                     text-transform:uppercase;letter-spacing:0.5px;">Travel Date</p>
+                          <p style="margin:0;font-size:15px;font-weight:600;color:#1a2238;">
+                            📅 {{ travel_date_display }}
+                          </p>
+                        </td>
+                        <td style="width:50%;vertical-align:top;">
+                          <p style="margin:0 0 3px;font-size:11px;font-weight:700;color:#888;
+                                     text-transform:uppercase;letter-spacing:0.5px;">Group Size</p>
+                          <p style="margin:0;font-size:15px;font-weight:600;color:#1a2238;">
+                            👥 {{ num_people }} person{% if num_people != 1 %}s{% endif %}
+                          </p>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- What happens next -->
+              <h3 style="margin:0 0 14px;font-size:16px;color:#1a2238;font-weight:700;">
+                What happens next?
+              </h3>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+                     style="margin-bottom:28px;">
+                {% for step in "123" %}{% endfor %}
+                <tr>
+                  <td style="vertical-align:top;padding-bottom:12px;">
+                    <table role="presentation" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td style="width:32px;height:32px;background-color:#C8724A;border-radius:50%;
+                                   text-align:center;vertical-align:middle;font-weight:700;
+                                   color:#ffffff;font-size:14px;">
+                          1
+                        </td>
+                        <td style="padding-left:12px;font-size:14px;color:#444444;line-height:1.6;vertical-align:middle;">
+                          We review your dates and confirm tour availability.
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align:top;padding-bottom:12px;">
+                    <table role="presentation" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td style="width:32px;height:32px;background-color:#D4A853;border-radius:50%;
+                                   text-align:center;vertical-align:middle;font-weight:700;
+                                   color:#1a2238;font-size:14px;">
+                          2
+                        </td>
+                        <td style="padding-left:12px;font-size:14px;color:#444444;line-height:1.6;vertical-align:middle;">
+                          A travel expert contacts you with a personalised quote and itinerary details.
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align:top;">
+                    <table role="presentation" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td style="width:32px;height:32px;background-color:#C8724A;border-radius:50%;
+                                   text-align:center;vertical-align:middle;font-weight:700;
+                                   color:#ffffff;font-size:14px;">
+                          3
+                        </td>
+                        <td style="padding-left:12px;font-size:14px;color:#444444;line-height:1.6;vertical-align:middle;">
+                          Confirm your booking and let Morocco take care of the rest! 🇲🇦
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- CTA -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td align="center">
+                    <a href="{{ agency_website }}/tours.html"
+                       style="display:inline-block;background-color:#C8724A;color:#ffffff;
+                              text-decoration:none;font-size:14px;font-weight:700;
+                              padding:13px 30px;border-radius:4px;letter-spacing:0.5px;">
+                      Browse More Tours
+                    </a>
+                  </td>
+                </tr>
+              </table>
+
+            </td>
+          </tr>
+
+          <!-- Contact strip -->
+          <tr>
+            <td style="background-color:#fdf8f3;padding:18px 32px;border-top:1px solid #e8e0d5;">
+              <p style="margin:0;font-size:13px;color:#666666;text-align:center;">
+                <strong style="color:#1a2238;">Need to reach us sooner?</strong><br>
+                Call us at <a href="tel:{{ agency_phone|cut:' ' }}" style="color:#C8724A;text-decoration:none;">{{ agency_phone }}</a>
+                or visit <a href="{{ agency_website }}" style="color:#C8724A;text-decoration:none;">{{ agency_website }}</a>
+              </p>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td style="background-color:#1a2238;border-radius:0 0 8px 8px;padding:22px 32px;text-align:center;">
+              <p style="margin:0;font-size:12px;color:#8090b0;line-height:1.7;">
+                {{ agency_name }} &nbsp;|&nbsp; {{ agency_phone }}<br>
+                <a href="{{ agency_website }}" style="color:#D4A853;text-decoration:none;">{{ agency_website }}</a>
+              </p>
+              <p style="margin:10px 0 0;font-size:11px;color:#5a6a80;">
+                You received this because you submitted a booking request on our website.
+              </p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

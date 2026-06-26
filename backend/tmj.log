@@ -1,0 +1,13 @@
+[2026-06-25 21:58:57] INFO api — Contact | ip=127.0.0.1 | data={'name': 'khalid amro', 'email': 'bgost603@gmail.com', 'phone': '0633209443', 'subject': 'Custom Itinerary Request', 'message': 'layn3el zaml bok\n'}
+[2026-06-25 21:58:59] INFO api — Email sent | to=['blackbcat777@gmail.com'] | subject=[True Morocco Journeys] Custom Itinerary Request — from khalid amro
+[2026-06-25 21:59:01] INFO api — Email sent | to=['bgost603@gmail.com'] | subject=We received your message — True Morocco Journeys
+[2026-06-25 21:59:01] INFO api — Contact OK | ip=127.0.0.1 | email=bgost603@gmail.com | subject=Custom Itinerary Request
+[2026-06-25 22:01:12] INFO api — Contact | ip=127.0.0.1 | data={'name': 'knas', 'email': 'hsbb@gmail.com', 'phone': '', 'subject': 'Custom Itinerary Request', 'message': 'wa lkhdma lkhedma wach magat9lblch lik 3la khdma\n'}
+[2026-06-25 22:01:14] INFO api — Email sent | to=['blackbcat777@gmail.com'] | subject=[True Morocco Journeys] Custom Itinerary Request — from knas
+[2026-06-25 22:01:18] INFO api — Email sent | to=['hsbb@gmail.com'] | subject=We received your message — True Morocco Journeys
+[2026-06-25 22:01:18] INFO api — Contact OK | ip=127.0.0.1 | email=hsbb@gmail.com | subject=Custom Itinerary Request
+[2026-06-26 16:16:02] INFO api — Contact | ip=127.0.0.1 | data={'name': 'khalid amro', 'email': 'amroukhalid25@gmail.com', 'phone': '0633209443', 'subject': 'Existing Booking Question', 'message': 'qaea'}
+[2026-06-26 16:16:21] INFO api — Contact | ip=127.0.0.1 | data={'name': 'khalid amro', 'email': 'amroukhalid25@gmail.com', 'phone': '0633209443', 'subject': 'Existing Booking Question', 'message': 'I like this website\n'}
+[2026-06-26 16:16:23] INFO api — Email sent | to=['blackbcat777@gmail.com'] | subject=[True Morocco Journeys] Existing Booking Question — from khalid amro
+[2026-06-26 16:16:25] INFO api — Email sent | to=['amroukhalid25@gmail.com'] | subject=We received your message — True Morocco Journeys
+[2026-06-26 16:16:25] INFO api — Contact OK | ip=127.0.0.1 | email=amroukhalid25@gmail.com | subject=Existing Booking Question
