@@ -203,41 +203,25 @@
             <span class="amount">&euro;450</span>
             <span class="unit">/ person</span>
           </div>
-
-          <!-- Guest selector -->
-          <div class="mb-3">
-            <label class="form-label" for="bGuests">Guests</label>
-            <select class="form-select" id="bGuests">
-              <option value="1">1 Guest</option>
-              <option value="2" selected>2 Guests</option>
-              <option value="3">3 Guests</option>
-              <option value="4">4 Guests</option>
-              <option value="5">5 Guests</option>
-              <option value="6">6 Guests</option>
-              <option value="7">7 Guests</option>
-              <option value="8">8 Guests</option>
-            </select>
-          </div>
-
-          <!-- Dynamic price summary -->
-          <div class="summary-line">
-            <span id="bPriceLabel">Base price &times; 2</span>
-            <span id="bBaseTotal">&euro;900</span>
-          </div>
-          <div class="summary-line">
-            <span>Service fee</span>
-            <span id="bServiceFee">&euro;30</span>
-          </div>
-          <div class="summary-line total">
-            <span>Estimated total</span>
-            <span id="bGrandTotal">&euro;930</span>
-          </div>
-
-          <!-- Book Now links to contact page with prefilled params -->
-          <a id="bookNowBtn"
-             href="contact.html?guests=2&total=930&tour=Sahara+Desert+4x4+Expedition"
-             class="btn btn-primary w-100 mt-3">Book Now</a>
-
+          <form id="bookingForm">
+            <div class="mb-3">
+              <label class="form-label" for="bDate">Travel Date</label>
+              <input type="date" class="form-control" id="bDate" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="bGuests">Guests</label>
+              <select class="form-select" id="bGuests">
+                <option>1 Guest</option>
+                <option selected>2 Guests</option>
+                <option>3 Guests</option>
+                <option>4+ Guests</option>
+              </select>
+            </div>
+            <div class="summary-line"><span>Base price &times; 2</span><span>&euro;900</span></div>
+            <div class="summary-line"><span>Service fee</span><span>&euro;30</span></div>
+            <div class="summary-line total"><span>Estimated total</span><span>&euro;930</span></div>
+            <button type="submit" class="btn btn-primary w-100 mt-3">Request to Book</button>
+          </form>
           <p class="text-center text-muted mt-3 mb-0" style="font-size:.8rem;">No payment is taken now — we'll confirm availability first.</p>
           <hr class="short mx-auto">
           <div class="d-flex align-items-center gap-2 text-muted" style="font-size:.85rem;">
@@ -367,38 +351,20 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="js/main.js"></script>
 <script>
-  // ── Dynamic pricing & Book Now link ──────────────────────────────────────
-  (function () {
-    var PRICE_PER_PERSON = 450;
-    var SERVICE_FEE      = 30;
-    var TOUR_NAME        = 'Sahara Desert 4x4 Expedition';
-
-    var guestsEl    = document.getElementById('bGuests');
-    var labelEl     = document.getElementById('bPriceLabel');
-    var baseTotalEl = document.getElementById('bBaseTotal');
-    var serviceEl   = document.getElementById('bServiceFee');
-    var grandEl     = document.getElementById('bGrandTotal');
-    var btnEl       = document.getElementById('bookNowBtn');
-
-    function updatePricing() {
-      var guests    = parseInt(guestsEl.value, 10) || 2;
-      var base      = PRICE_PER_PERSON * guests;
-      var grand     = base + SERVICE_FEE;
-
-      labelEl.innerHTML  = 'Base price &times; ' + guests;
-      baseTotalEl.textContent = '\u20ac' + base;
-      serviceEl.textContent   = '\u20ac' + SERVICE_FEE;
-      grandEl.textContent     = '\u20ac' + grand;
-
-      // Update the Book Now href so contact page can prefill the message
-      btnEl.href = 'contact.html?guests=' + guests
-                 + '&total=' + grand
-                 + '&tour=' + encodeURIComponent(TOUR_NAME);
-    }
-
-    guestsEl.addEventListener('change', updatePricing);
-    updatePricing(); // run once on load
-  })();
+  // Simple, dependency-free "request to book" confirmation for this static template.
+  document.getElementById('bookingForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var btn = e.target.querySelector('button[type="submit"]');
+    var original = btn.textContent;
+    btn.textContent = 'Request Sent!';
+    btn.classList.add('btn-teal');
+    btn.classList.remove('btn-primary');
+    setTimeout(function(){
+      btn.textContent = original;
+      btn.classList.remove('btn-teal');
+      btn.classList.add('btn-primary');
+    }, 2400);
+  });
 </script>
 </body>
 </html>
