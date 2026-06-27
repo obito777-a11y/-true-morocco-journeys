@@ -11,3 +11,19 @@
 [2026-06-26 16:16:23] INFO api — Email sent | to=['blackbcat777@gmail.com'] | subject=[True Morocco Journeys] Existing Booking Question — from khalid amro
 [2026-06-26 16:16:25] INFO api — Email sent | to=['amroukhalid25@gmail.com'] | subject=We received your message — True Morocco Journeys
 [2026-06-26 16:16:25] INFO api — Contact OK | ip=127.0.0.1 | email=amroukhalid25@gmail.com | subject=Existing Booking Question
+[2026-06-26 18:02:57] INFO api — Contact | ip=127.0.0.1 | data={'name': 'oussama khtar', 'email': 'Khataroussama9@gmail.com', 'phone': '8578329806', 'subject': 'Existing Booking Question', 'message': 'wa sir awa t9wed tn3es hhhhhh achmn trip ola zbi'}
+[2026-06-26 18:03:00] INFO api — Email sent | to=['blackbcat777@gmail.com'] | subject=[True Morocco Journeys] Existing Booking Question — from oussama khtar
+[2026-06-26 18:03:02] INFO api — Email sent | to=['khataroussama9@gmail.com'] | subject=We received your message — True Morocco Journeys
+[2026-06-26 18:03:02] INFO api — Contact OK | ip=127.0.0.1 | email=khataroussama9@gmail.com | subject=Existing Booking Question
+[2026-06-26 18:15:17] INFO api — Contact | ip=127.0.0.1 | data={'name': 'Black Gost', 'email': 'bgost603@gmail.com', 'phone': '8578329806', 'subject': 'Tour Booking', 'message': 'Tour: Sahara Desert 4x4 Expedition\nGuests: 8\nEstimated total: €3630\n\nPlease let me know your available dates and next steps.'}
+[2026-06-26 18:15:20] INFO api — Email sent | to=['blackbcat777@gmail.com'] | subject=[True Morocco Journeys] Tour Booking — from Black Gost
+[2026-06-26 18:15:22] INFO api — Email sent | to=['bgost603@gmail.com'] | subject=We received your message — True Morocco Journeys
+[2026-06-26 18:15:22] INFO api — Contact OK | ip=127.0.0.1 | email=bgost603@gmail.com | subject=Tour Booking
+[2026-06-27 02:32:55] INFO api — Newsletter | ip=127.0.0.1 | data={'email': 'bgost603@gmail.com'}
+[2026-06-27 02:33:39] INFO api — Newsletter | ip=127.0.0.1 | data={'email': 'bgost603@gmail.com'}
+[2026-06-27 02:33:42] INFO api — Email sent | to=['bgost603@gmail.com'] | subject=Welcome to True Morocco Journeys — Your Moroccan Adventure Awaits!
+[2026-06-27 02:33:42] INFO api — Newsletter OK | ip=127.0.0.1 | email=bgost603@gmail.com
+[2026-06-27 17:20:34] INFO api — Contact | ip=127.0.0.1 | data={'name': 'karima khayi', 'email': 'khayikarima2018@gmail.com', 'phone': '8578329806', 'subject': 'Group / Corporate Travel', 'message': 'bghit nmchi l tinjdad o ndoz 3la tighfrt'}
+[2026-06-27 17:20:37] INFO api — Email sent | to=['blackbcat777@gmail.com'] | subject=[True Morocco Journeys] Group / Corporate Travel — from karima khayi
+[2026-06-27 17:20:39] INFO api — Email sent | to=['khayikarima2018@gmail.com'] | subject=We received your message — True Morocco Journeys
+[2026-06-27 17:20:39] INFO api — Contact OK | ip=127.0.0.1 | email=khayikarima2018@gmail.com | subject=Group / Corporate Travel
