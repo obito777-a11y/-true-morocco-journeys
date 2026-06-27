@@ -196,7 +196,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .tmj-navbar .navbar-brand img{ height:42px; width:auto; transition:var(--transition); }
 .tmj-navbar.is-scrolled .navbar-brand img,
 .tmj-navbar.solid .navbar-brand img{ filter:none; }
-.tmj-navbar .navbar-brand img{ filter:brightness(0) invert(1); }
+.tmj-navbar .navbar-brand img{ filter:none; }
 .tmj-navbar.is-scrolled .navbar-brand img,
 .tmj-navbar.solid .navbar-brand img{ filter:none; }
 

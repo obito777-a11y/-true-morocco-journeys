@@ -139,12 +139,61 @@
     var emptyState = document.getElementById("filterEmptyState");
     if (!chips.length || !cards.length) return;
 
+    // ── Destination label map ──────────────────────────────────────────────
+    var destLabels = {
+      marrakesh:   "Marrakesh",
+      sahara:      "Sahara Desert",
+      chefchaouen: "Chefchaouen",
+      fes:         "Fes",
+      rabat:       "Rabat",
+      casablanca:  "Casablanca",
+      agadir:      "Agadir",
+      essaouira:   "Essaouira",
+      atlas:       "Atlas Mountains"
+    };
+
+    // ── Filter cards by destination ────────────────────────────────────────
+    function filterByDestination(dest) {
+      var visible = 0;
+      cards.forEach(function (card) {
+        var cardDest = (card.getAttribute("data-destination") || "").toLowerCase();
+        var show = !dest || cardDest === dest;
+        card.style.display = show ? "" : "none";
+        if (show) visible++;
+      });
+      if (emptyState) emptyState.style.display = visible === 0 ? "block" : "none";
+
+      // Update page header title & breadcrumb
+      var h1 = document.querySelector(".page-header h1");
+      var h1Sub = document.querySelector(".page-header p");
+      if (dest && destLabels[dest]) {
+        if (h1) h1.textContent = destLabels[dest] + " Tours";
+        if (h1Sub) h1Sub.textContent = "Showing all available tours for " + destLabels[dest] + ".";
+      }
+    }
+
+    // ── Read ?destination= from URL on page load ───────────────────────────
+    var urlParams = new URLSearchParams(window.location.search);
+    var destParam = (urlParams.get("destination") || "").toLowerCase();
+    if (destParam && destLabels[destParam]) {
+      filterByDestination(destParam);
+      // Deactivate all chips (no chip matches destination filter)
+      chips.forEach(function (c) { c.classList.remove("active"); });
+    }
+
+    // ── Category chip clicks ───────────────────────────────────────────────
     chips.forEach(function (chip) {
       chip.addEventListener("click", function () {
         chips.forEach(function (c) { c.classList.remove("active"); });
         chip.classList.add("active");
         var filter = chip.getAttribute("data-filter");
         var visible = 0;
+
+        // Reset header if we click a chip
+        var h1 = document.querySelector(".page-header h1");
+        var h1Sub = document.querySelector(".page-header p");
+        if (h1) h1.textContent = "Tours & Excursions";
+        if (h1Sub) h1Sub.textContent = "Every itinerary below can flex to your dates, pace and group size — these are starting points, not fixed scripts.";
 
         cards.forEach(function (card) {
           var show = filter === "all" || (card.getAttribute("data-category") || "").split(" ").indexOf(filter) !== -1;
@@ -156,6 +205,7 @@
       });
     });
 
+    // ── Search input ───────────────────────────────────────────────────────
     var searchInput = document.getElementById("tourSearch");
     if (searchInput) {
       searchInput.addEventListener("input", function () {
