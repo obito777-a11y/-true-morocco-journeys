@@ -644,7 +644,7 @@ footer.site-footer h5{
   margin-bottom:1.3rem;
 }
 footer.site-footer .brand{ display:flex; align-items:center; gap:.6rem; color:#fff; font-family:var(--font-heading); font-weight:800; font-size:1.15rem; margin-bottom:1rem;}
-footer.site-footer .brand img{ height:38px;}
+footer.site-footer .brand img{ height:38px; filter:none; }
 footer.site-footer p{ color:rgba(255,255,255,.62); font-size:.92rem; }
 footer.site-footer ul li{ margin-bottom:.7rem; }
 footer.site-footer ul li a{ color:rgba(255,255,255,.68); font-size:.92rem; transition:var(--transition); }

@@ -163,7 +163,6 @@
       });
       if (emptyState) emptyState.style.display = visible === 0 ? "block" : "none";
 
-      // Update page header title & breadcrumb
       var h1 = document.querySelector(".page-header h1");
       var h1Sub = document.querySelector(".page-header p");
       if (dest && destLabels[dest]) {
@@ -177,7 +176,6 @@
     var destParam = (urlParams.get("destination") || "").toLowerCase();
     if (destParam && destLabels[destParam]) {
       filterByDestination(destParam);
-      // Deactivate all chips (no chip matches destination filter)
       chips.forEach(function (c) { c.classList.remove("active"); });
     }
 
@@ -189,7 +187,6 @@
         var filter = chip.getAttribute("data-filter");
         var visible = 0;
 
-        // Reset header if we click a chip
         var h1 = document.querySelector(".page-header h1");
         var h1Sub = document.querySelector(".page-header p");
         if (h1) h1.textContent = "Tours & Excursions";
