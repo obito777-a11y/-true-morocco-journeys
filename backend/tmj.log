@@ -27,3 +27,14 @@
 [2026-06-27 17:20:37] INFO api — Email sent | to=['blackbcat777@gmail.com'] | subject=[True Morocco Journeys] Group / Corporate Travel — from karima khayi
 [2026-06-27 17:20:39] INFO api — Email sent | to=['khayikarima2018@gmail.com'] | subject=We received your message — True Morocco Journeys
 [2026-06-27 17:20:39] INFO api — Contact OK | ip=127.0.0.1 | email=khayikarima2018@gmail.com | subject=Group / Corporate Travel
+[2026-06-28 17:43:50] INFO api — Contact | ip=127.0.0.1 | data={'name': 'khalid amro', 'email': 'bgost603@gmail.com', 'date': '2005-01-01', 'guests': '4', 'tour': 'Marrakesh Cultural Immersion', 'price': '€2750', 'message': 'shkfwehjwfheb'}
+[2026-06-28 17:43:53] INFO api — Email sent | to=['blackbcat777@gmail.com'] | subject=[True Morocco Journeys] General Enquiry — from khalid amro
+[2026-06-28 17:43:56] INFO api — Email sent | to=['bgost603@gmail.com'] | subject=We received your message — True Morocco Journeys
+[2026-06-28 17:43:56] INFO api — Contact OK | ip=127.0.0.1 | email=bgost603@gmail.com | subject=General Enquiry
+[2026-06-28 19:30:42] INFO api — Booking | ip=127.0.0.1 | data={'name': 'khalid amro', 'email': 'bgost603@gmail.com', 'travel_date': '2027-01-01', 'num_people': 2, 'tour_name': 'Sahara Desert 4x4 Expedition', 'message': ''}
+[2026-06-28 19:31:10] INFO api — Booking | ip=127.0.0.1 | data={'name': 'khalid amro', 'email': 'bgost603@gmail.com', 'travel_date': '2027-01-01', 'num_people': 2, 'tour_name': 'Sahara Desert 4x4 Expedition', 'message': ''}
+[2026-06-28 19:33:58] INFO api — Contact | ip=127.0.0.1 | data={'name': 'wjsvj', 'email': 'blackbcat777@gmail.com', 'date': '2027-01-01', 'guests': '2', 'tour': 'Sahara Desert 4x4 Expedition', 'price': '€930', 'message': ''}
+[2026-06-28 19:34:22] INFO api — Booking | ip=127.0.0.1 | data={'name': 'wjsvj', 'email': 'blackbcat777@gmail.com', 'travel_date': '2027-01-01', 'num_people': 2, 'tour_name': 'Sahara Desert 4x4 Expedition', 'message': ''}
+[2026-06-28 19:34:26] INFO api — Email sent | to=['blackbcat777@gmail.com'] | subject=[True Morocco Journeys] New Booking — Sahara Desert 4x4 Expedition (2027-01-01)
+[2026-06-28 19:34:28] INFO api — Email sent | to=['blackbcat777@gmail.com'] | subject=Booking Request Received — Sahara Desert 4x4 Expedition
+[2026-06-28 19:34:28] INFO api — Booking OK | ip=127.0.0.1 | email=blackbcat777@gmail.com | tour=Sahara Desert 4x4 Expedition

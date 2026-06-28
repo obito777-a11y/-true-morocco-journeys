@@ -1,8 +1,9 @@
 """
-api/views.py — True Morocco Journeys API views.
+api/views.py — True Morocco Explorer API views.
 
 Each view:
   • Validates input via a DRF serializer
+  • Saves to the database  ← NEW
   • Sends HTML emails via Django's email backend
   • Returns a consistent JSON envelope  { success: bool, message/error: str }
   • Logs every inbound request and outcome to tmj.log
@@ -18,7 +19,7 @@ from django_ratelimit.decorators import ratelimit
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from .models import NewsletterSubscriber
+from .models import Booking, ContactMessage, NewsletterSubscriber
 from .serializers import BookingSerializer, ContactSerializer, NewsletterSerializer
 
 logger = logging.getLogger("api")
@@ -33,8 +34,8 @@ def _get_client_ip(request) -> str:
 
 def _agency_ctx() -> dict:
     return {
-        "agency_name": settings.AGENCY_NAME,
-        "agency_phone": settings.AGENCY_PHONE,
+        "agency_name":    settings.AGENCY_NAME,
+        "agency_phone":   settings.AGENCY_PHONE,
         "agency_website": settings.AGENCY_WEBSITE,
     }
 
@@ -75,9 +76,9 @@ def _err(error: str, status: int = 400) -> Response:
 @api_view(["GET"])
 def health(request):
     return Response({
-        "status": "ok",
+        "status":    "ok",
         "timestamp": datetime.now(tz=timezone.utc).isoformat(),
-        "service": settings.AGENCY_NAME,
+        "service":   settings.AGENCY_NAME,
     }, status=200)
 
 
@@ -96,22 +97,30 @@ def contact(request):
 
     data = serializer.validated_data
 
-    # ── FIX: build a descriptive subject from the submitted subject field ────
-    submitted_subject = data.get("subject") or "General Enquiry"
-    email_subject_admin = f"[{settings.AGENCY_NAME}] {submitted_subject} — from {data['name']}"
+    # ── Save to database ──────────────────────────────────────────────────────
+    ContactMessage.objects.create(
+        name    = data["name"],
+        email   = data["email"],
+        phone   = data.get("phone", ""),
+        subject = data.get("subject", ""),
+        message = data["message"],
+    )
+
+    submitted_subject    = data.get("subject") or "General Enquiry"
+    email_subject_admin  = f"[{settings.AGENCY_NAME}] {submitted_subject} — from {data['name']}"
     email_subject_client = f"We received your message — {settings.AGENCY_NAME}"
 
     _send_html_email(
-        subject=email_subject_admin,
-        to=[settings.ADMIN_EMAIL],
-        template_name="contact_admin.html",
-        context=data,
+        subject       = email_subject_admin,
+        to            = [settings.ADMIN_EMAIL],
+        template_name = "contact_admin.html",
+        context       = data,
     )
     _send_html_email(
-        subject=email_subject_client,
-        to=[data["email"]],
-        template_name="contact_client.html",
-        context=data,
+        subject       = email_subject_client,
+        to            = [data["email"]],
+        template_name = "contact_client.html",
+        context       = data,
     )
 
     logger.info("Contact OK | ip=%s | email=%s | subject=%s", ip, data["email"], submitted_subject)
@@ -132,19 +141,31 @@ def booking(request):
         return _err(str(first_error))
 
     data = serializer.validated_data
+
+    # ── Save to database ──────────────────────────────────────────────────────
+    Booking.objects.create(
+        name        = data["name"],
+        email       = data["email"],
+        phone       = data.get("phone", ""),
+        tour_name   = data["tour_name"],
+        travel_date = data["travel_date"],
+        num_people  = data["num_people"],
+        message     = data.get("message", ""),
+    )
+
     display_ctx = {**data, "travel_date_display": data["travel_date"].strftime("%B %d, %Y")}
 
     _send_html_email(
-        subject=f"[{settings.AGENCY_NAME}] New Booking — {data['tour_name']} ({data['travel_date']})",
-        to=[settings.ADMIN_EMAIL],
-        template_name="booking_admin.html",
-        context=display_ctx,
+        subject       = f"[{settings.AGENCY_NAME}] New Booking — {data['tour_name']} ({data['travel_date']})",
+        to            = [settings.ADMIN_EMAIL],
+        template_name = "booking_admin.html",
+        context       = display_ctx,
     )
     _send_html_email(
-        subject=f"Booking Request Received — {data['tour_name']}",
-        to=[data["email"]],
-        template_name="booking_client.html",
-        context=display_ctx,
+        subject       = f"Booking Request Received — {data['tour_name']}",
+        to            = [data["email"]],
+        template_name = "booking_client.html",
+        context       = display_ctx,
     )
 
     logger.info("Booking OK | ip=%s | email=%s | tour=%s", ip, data["email"], data["tour_name"])
@@ -180,10 +201,10 @@ def newsletter(request):
         return _ok("You're subscribed to our newsletter!")
 
     _send_html_email(
-        subject=f"Welcome to {settings.AGENCY_NAME} — Your Moroccan Adventure Awaits!",
-        to=[email],
-        template_name="newsletter_welcome.html",
-        context={"email": email},
+        subject       = f"Welcome to {settings.AGENCY_NAME} — Your Moroccan Adventure Awaits!",
+        to            = [email],
+        template_name = "newsletter_welcome.html",
+        context       = {"email": email},
     )
 
     logger.info("Newsletter OK | ip=%s | email=%s", ip, email)

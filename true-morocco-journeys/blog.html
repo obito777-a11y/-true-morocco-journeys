@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog | True Morocco Journeys</title>
+<meta name="description" content="Travel tips, destination guides and field notes from our Moroccan-born guides.">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+<link rel="stylesheet" href="css/style.css">
+<style>
+.cat-list li a.active-cat { color: var(--color-primary); font-weight: 700; }
+.cat-list li.all-cat a { font-weight: 600; }
+#blogEmptyState { display: none; text-align: center; padding: 3rem 1rem; }
+#blogEmptyState .empty-icon { font-size: 3rem; color: var(--color-primary); opacity: .4; margin-bottom: 1rem; }
+.filter-active-label {
+  display: inline-flex; align-items: center; gap: .4rem;
+  background: var(--color-sand); border-radius: 30px; padding: .25rem .85rem;
+  font-size: .78rem; font-weight: 700; color: var(--color-secondary); margin-bottom: 1.2rem;
+}
+.filter-active-label button {
+  background: none; border: none; padding: 0; line-height: 1;
+  color: var(--color-primary); font-size: .9rem; cursor: pointer;
+}
+#activeFilterBar { min-height: 2rem; }
+.search-wrap { position: relative; }
+.search-wrap input { padding-left: 2.5rem; padding-right: 2.2rem; }
+.search-wrap .bi-search { position: absolute; top: 50%; left: .85rem; transform: translateY(-50%); color: var(--color-navy-soft); pointer-events: none; }
+.search-wrap .clear-search {
+  position: absolute; top: 50%; right: .7rem; transform: translateY(-50%);
+  background: none; border: none; padding: 0; color: var(--color-navy-soft);
+  font-size: 1rem; line-height: 1; cursor: pointer; display: none;
+}
+#resultsCount { font-size: .8rem; color: var(--color-navy-soft); margin-bottom: 1rem; min-height: 1.2rem; }
+.tmj-pagination { flex-wrap: wrap; }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg tmj-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <img src="images/logo.png" alt="True Morocco Journeys logo">
+      <span>True Morocco<br>Journeys</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="mainNav">
+      <ul class="navbar-nav align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" data-page="index.html" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" data-page="tours.html" href="tours.html">Tours &amp; Excursions</a></li>
+        <li class="nav-item"><a class="nav-link" data-page="destinations.html" href="destinations.html">Destinations</a></li>
+        <li class="nav-item"><a class="nav-link" data-page="about.html" href="about.html">About Us</a></li>
+        <li class="nav-item"><a class="nav-link active" data-page="blog.html" href="blog.html">Blog</a></li>
+        <li class="nav-item"><a class="nav-link" data-page="contact.html" href="contact.html">Contact</a></li>
+        <li class="nav-item"><a class="btn btn-primary" href="contact.html">Book Now</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<header class="page-header" style="background-image:url('images/hero/hero-blog.jpg');">
+  <div class="container">
+    <nav aria-label="breadcrumb" class="breadcrumb mb-2">
+      <a href="index.html">Home</a><span class="mx-2">/</span><span class="current">Blog</span>
+    </nav>
+    <h1>Stories From The Road</h1>
+    <p>Field notes, city guides and practical tips from the guides who actually run these trips.</p>
+  </div>
+</header>
+
+<section class="section-pad">
+  <div class="container">
+    <div class="row g-5">
+
+      <!-- POSTS -->
+      <div class="col-lg-8">
+        <div id="activeFilterBar"></div>
+        <div id="resultsCount"></div>
+        <div class="row g-4" id="blogGrid"></div>
+        <div id="blogEmptyState">
+          <div class="empty-icon"><i class="bi bi-journal-x"></i></div>
+          <h5>No articles found</h5>
+          <p class="text-muted small">Try a different search term or browse all categories.</p>
+          <button class="btn btn-outline-navy btn-sm-pill mt-2" id="emptyResetBtn">Show all articles</button>
+        </div>
+        <nav class="tmj-pagination" aria-label="Blog pagination" id="blogPagination"></nav>
+      </div>
+
+      <!-- SIDEBAR -->
+      <div class="col-lg-4">
+        <div class="sidebar-card reveal">
+          <h4>Search</h4>
+          <div class="search-wrap">
+            <i class="bi bi-search"></i>
+            <input type="search" id="blogSearch" class="form-control" placeholder="Search articles&hellip;" aria-label="Search articles" autocomplete="off">
+            <button class="clear-search" id="clearSearch" aria-label="Clear search"><i class="bi bi-x"></i></button>
+          </div>
+        </div>
+        <div class="sidebar-card reveal">
+          <h4>Categories</h4>
+          <ul class="cat-list" id="catList"></ul>
+        </div>
+        <div class="sidebar-card reveal">
+          <h4>Recent Posts</h4>
+          <div id="recentPosts"></div>
+        </div>
+        <div class="sidebar-card reveal mb-0" style="background:var(--color-secondary); border:none;">
+          <h4 style="color:#fff; border-color:rgba(255,255,255,.18);">Trip Newsletter</h4>
+          <p class="small mb-3" style="color:rgba(255,255,255,.75);">Seasonal tips &amp; new itineraries, once a month.</p>
+          <form data-newsletter>
+            <input type="email" class="form-control mb-2" placeholder="you@example.com" required aria-label="Email address">
+            <button class="btn btn-primary w-100" type="submit">Subscribe</button>
+          </form>
+          <small class="newsletter-msg d-block mt-2" style="color:rgba(255,255,255,.85);"></small>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-4 col-md-6">
+        <div class="brand"><img src="images/logo.png" alt="True Morocco Journeys logo">True Morocco Journeys</div>
+        <p>A small team of Moroccan-born guides building unforgettable, authentic itineraries since 2012.</p>
+        <div class="social-row">
+          <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" aria-label="TripAdvisor"><i class="bi bi-airplane"></i></a>
+          <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-6">
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="tours.html">Tours &amp; Excursions</a></li>
+          <li><a href="destinations.html">Destinations</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h5>Destinations</h5>
+        <ul>
+          <li><a href="destinations.html#marrakesh">Marrakesh</a></li>
+          <li><a href="destinations.html#sahara">Sahara Desert</a></li>
+          <li><a href="destinations.html#chefchaouen">Chefchaouen</a></li>
+          <li><a href="destinations.html#fes">Fes</a></li>
+          <li><a href="destinations.html#agadir">Agadir &amp; Essaouira</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h5>Contact</h5>
+        <div class="contact-line"><i class="bi bi-geo-alt"></i><span>12 Rue des Orangers, Gueliz, Marrakesh 40000, Morocco</span></div>
+        <div class="contact-line"><i class="bi bi-telephone"></i><span>+212 5 24 00 00 00</span></div>
+        <div class="contact-line"><i class="bi bi-envelope"></i><span>hello@truemoroccojourneys.com</span></div>
+      </div>
+    </div>
+    <div class="footer-bottom d-flex flex-wrap justify-content-between gap-2">
+      <p class="mb-0">&copy; <span id="currentYear"></span> True Morocco Journeys. All rights reserved.</p>
+      <p class="mb-0"><a href="#">Privacy Policy</a> &middot; <a href="#">Terms of Service</a></p>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" aria-label="Back to top"><i class="bi bi-arrow-up"></i></button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
+<script>
+/* =======================================================================
+   BLOG ENGINE
+   To add a new article: add an object to the POSTS array below.
+   Match the shape exactly. The page rebuilds itself automatically.
+   ======================================================================= */
+(function () {
+  'use strict';
+
+  /* --- ARTICLE DATA ---------------------------------------------------- */
+  var POSTS = [
+    {
+      id: 1,
+      title: 'Best Time to Visit the Sahara: A Season-by-Season Guide',
+      excerpt: 'What the dunes actually feel like in each season, and when to book the overnight camp.',
+      category: 'Trip Planning',
+      date: 'Jun 14, 2026', dateSort: 20260614, read: 6,
+      img: 'images/blog/blog-1.jpg', alt: 'Sahara desert dunes at golden hour',
+      url: 'blog-post.html'
+    },
+    {
+      id: 2,
+      title: '10 Things to Do in Marrakesh That Are Not on Every List',
+      excerpt: 'Beyond Jemaa el-Fnaa: the rooftop cafes and quiet gardens locals actually use.',
+      category: 'City Guides',
+      date: 'Jun 2, 2026', dateSort: 20260602, read: 8,
+      img: 'images/blog/blog-2.jpg', alt: 'Marrakesh medina street scene',
+      url: 'blog-post.html'
+    },
+    {
+      id: 3,
+      title: 'A Slow Guide to Chefchaouen, the Blue Pearl',
+      excerpt: 'Why two unhurried days beat one rushed afternoon in the blue city.',
+      category: 'City Guides',
+      date: 'May 21, 2026', dateSort: 20260521, read: 5,
+      img: 'images/blog/blog-3.jpg', alt: 'Chefchaouen blue alleyways',
+      url: 'blog-post.html'
+    },
+    {
+      id: 4,
+      title: 'A Taste of Moroccan Cuisine: What to Order, and Where',
+      excerpt: 'Tagine, couscous, mint tea and the regional dishes worth seeking out.',
+      category: 'Food & Culture',
+      date: 'May 9, 2026', dateSort: 20260509, read: 7,
+      img: 'images/blog/blog-4.jpg', alt: 'Moroccan tagine and mint tea',
+      url: 'blog-post.html'
+    },
+    {
+      id: 5,
+      title: 'Packing for the Atlas Mountains: A Practical List',
+      excerpt: 'Layering for villages that can swing 20 degrees between morning and night.',
+      category: 'Trip Planning',
+      date: 'Apr 27, 2026', dateSort: 20260427, read: 6,
+      img: 'images/blog/blog-5.jpg', alt: 'Atlas Mountains trekking trail',
+      url: 'blog-post.html'
+    },
+    {
+      id: 6,
+      title: 'Sustainable Travel in Morocco: A Few Honest Notes',
+      excerpt: 'Where your money actually goes, and how to ask better questions of any operator.',
+      category: 'Responsible Travel',
+      date: 'Apr 12, 2026', dateSort: 20260412, read: 5,
+      img: 'images/blog/blog-6.jpg', alt: 'Coastal fishing town in Morocco',
+      url: 'blog-post.html'
+    },
+    {
+      id: 7,
+      title: 'Fes in 48 Hours: The Medina Route We Actually Use',
+      excerpt: 'A tannery, a madrasa, a lunch spot without a tout in sight.',
+      category: 'City Guides',
+      date: 'Apr 1, 2026', dateSort: 20260401, read: 7,
+      img: 'images/blog/blog-1.jpg', alt: 'Fes medina rooftop view',
+      url: 'blog-post.html'
+    },
+    {
+      id: 8,
+      title: 'How to Photograph Morocco Without Being That Tourist',
+      excerpt: 'Light, permission, and the difference between a portrait and a snap.',
+      category: 'Photography Tips',
+      date: 'Mar 18, 2026', dateSort: 20260318, read: 6,
+      img: 'images/blog/blog-2.jpg', alt: 'Photographer in a Moroccan market',
+      url: 'blog-post.html'
+    },
+    {
+      id: 9,
+      title: 'Crossing the Tizi n\'Tichka: What the Drive Is Actually Like',
+      excerpt: 'The pass, the hairpins, the kasbah stop, and why you should do it early.',
+      category: 'Trip Planning',
+      date: 'Mar 5, 2026', dateSort: 20260305, read: 5,
+      img: 'images/blog/blog-3.jpg', alt: 'Mountain road over Tizi n\'Tichka pass',
+      url: 'blog-post.html'
+    },
+    {
+      id: 10,
+      title: 'Hammam Etiquette: A Calm, Honest First-Timer Guide',
+      excerpt: 'What to bring, what to wear, what to expect and how to relax into it.',
+      category: 'Food & Culture',
+      date: 'Feb 20, 2026', dateSort: 20260220, read: 4,
+      img: 'images/blog/blog-4.jpg', alt: 'Traditional hammam tiles',
+      url: 'blog-post.html'
+    },
+    {
+      id: 11,
+      title: 'Essaouira in Winter: Why Off-Season Is Better',
+      excerpt: 'Empty ramparts, quiet fishing port, and half-price riads with a fire in the room.',
+      category: 'City Guides',
+      date: 'Feb 8, 2026', dateSort: 20260208, read: 5,
+      img: 'images/blog/blog-5.jpg', alt: 'Essaouira blue boats and ramparts',
+      url: 'blog-post.html'
+    },
+    {
+      id: 12,
+      title: 'Golden Hour in the Sahara: Camera Settings and Timing',
+      excerpt: 'The exact window, the right position on the dune, and why a tripod matters here.',
+      category: 'Photography Tips',
+      date: 'Jan 25, 2026', dateSort: 20260125, read: 5,
+      img: 'images/blog/blog-6.jpg', alt: 'Sahara dunes at golden hour',
+      url: 'blog-post.html'
+    },
+    {
+      id: 13,
+      title: 'Buying a Carpet in Morocco Without Getting Played',
+      excerpt: 'How the souks work, what fair prices look like, and how to walk away well.',
+      category: 'Food & Culture',
+      date: 'Jan 12, 2026', dateSort: 20260112, read: 6,
+      img: 'images/blog/blog-1.jpg', alt: 'Moroccan rugs in a souk stall',
+      url: 'blog-post.html'
+    },
+    {
+      id: 14,
+      title: 'Plastic-Free Trekking in the Atlas Mountains',
+      excerpt: 'Water purification, local food, and the villages already leading on waste.',
+      category: 'Responsible Travel',
+      date: 'Dec 30, 2025', dateSort: 20251230, read: 6,
+      img: 'images/blog/blog-2.jpg', alt: 'Berber village in the High Atlas',
+      url: 'blog-post.html'
+    },
+    {
+      id: 15,
+      title: 'Morocco With Kids: What Works, What Does Not',
+      excerpt: 'Riads, long drives, dune rides, and the unexpected win of a medina treasure hunt.',
+      category: 'Trip Planning',
+      date: 'Dec 15, 2025', dateSort: 20251215, read: 8,
+      img: 'images/blog/blog-3.jpg', alt: 'Family in a Moroccan riad courtyard',
+      url: 'blog-post.html'
+    },
+    {
+      id: 16,
+      title: 'The Street Food of Marrakesh: What to Eat and Where to Stand',
+      excerpt: 'Snail soup, msemen, harira and the order of operations for a proper night market crawl.',
+      category: 'Food & Culture',
+      date: 'Dec 3, 2025', dateSort: 20251203, read: 5,
+      img: 'images/blog/blog-4.jpg', alt: 'Jemaa el-Fnaa food stalls at night',
+      url: 'blog-post.html'
+    }
+  ];
+
+  /* --- SETTINGS -------------------------------------------------------- */
+  var PER_PAGE = 6;
+
+  /* --- STATE ----------------------------------------------------------- */
+  var state = { category: 'All', query: '', page: 1 };
+
+  /* --- DOM REFS -------------------------------------------------------- */
+  var grid         = document.getElementById('blogGrid');
+  var pagination   = document.getElementById('blogPagination');
+  var emptyState   = document.getElementById('blogEmptyState');
+  var resultsCount = document.getElementById('resultsCount');
+  var filterBar    = document.getElementById('activeFilterBar');
+  var searchInput  = document.getElementById('blogSearch');
+  var clearBtn     = document.getElementById('clearSearch');
+  var catList      = document.getElementById('catList');
+  var recentPosts  = document.getElementById('recentPosts');
+  var emptyReset   = document.getElementById('emptyResetBtn');
+
+  /* --- HELPERS --------------------------------------------------------- */
+  function esc(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function getFiltered() {
+    var q = state.query.toLowerCase();
+    return POSTS.filter(function (p) {
+      var catOk  = state.category === 'All' || p.category === state.category;
+      var textOk = !q
+        || p.title.toLowerCase().indexOf(q) !== -1
+        || p.excerpt.toLowerCase().indexOf(q) !== -1
+        || p.category.toLowerCase().indexOf(q) !== -1;
+      return catOk && textOk;
+    });
+  }
+
+  /* --- RENDER GRID ----------------------------------------------------- */
+  function renderGrid() {
+    var posts = getFiltered();
+    var total = posts.length;
+    var pages = Math.max(1, Math.ceil(total / PER_PAGE));
+    if (state.page > pages) state.page = 1;
+
+    var slice = posts.slice((state.page - 1) * PER_PAGE, state.page * PER_PAGE);
+
+    resultsCount.textContent = (state.query || state.category !== 'All')
+      ? total + (total === 1 ? ' article found' : ' articles found')
+      : '';
+
+    filterBar.innerHTML = state.category !== 'All'
+      ? '<span class="filter-active-label">'
+        + '<i class="bi bi-tag-fill me-1"></i>' + esc(state.category)
+        + '<button onclick="TMJ_clearCat()" aria-label="Remove filter">&times;</button>'
+        + '</span>'
+      : '';
+
+    if (total === 0) {
+      grid.innerHTML = '';
+      emptyState.style.display = 'block';
+      pagination.innerHTML = '';
+      return;
+    }
+    emptyState.style.display = 'none';
+
+    var html = '';
+    slice.forEach(function (p, i) {
+      var delay = i % 3 === 1 ? ' reveal-delay-1' : i % 3 === 2 ? ' reveal-delay-2' : '';
+      html += '<div class="col-md-6 reveal' + delay + '">'
+        + '<article class="blog-card">'
+        + '<div class="card-img">'
+        + '<img src="' + esc(p.img) + '" alt="' + esc(p.alt) + '" loading="lazy">'
+        + '</div>'
+        + '<div class="card-body">'
+        + '<span class="category-tag" style="cursor:pointer" onclick="TMJ_filterCat(\'' + esc(p.category) + '\')">'
+        + esc(p.category) + '</span>'
+        + '<div class="meta">'
+        + '<span><i class="bi bi-calendar3"></i>' + esc(p.date) + '</span>'
+        + '<span><i class="bi bi-clock"></i>' + p.read + ' min read</span>'
+        + '</div>'
+        + '<h3><a href="' + esc(p.url) + '">' + esc(p.title) + '</a></h3>'
+        + '<p class="small text-muted mb-3">' + esc(p.excerpt) + '</p>'
+        + '<a href="' + esc(p.url) + '" class="readmore">Read Article <i class="bi bi-arrow-right"></i></a>'
+        + '</div></article></div>';
+    });
+    grid.innerHTML = html;
+
+    renderPagination(pages);
+  }
+
+  /* --- RENDER PAGINATION ----------------------------------------------- */
+  function renderPagination(pages) {
+    if (pages <= 1) { pagination.innerHTML = ''; return; }
+    var html = '';
+    for (var i = 1; i <= pages; i++) {
+      html += '<a href="#" class="' + (i === state.page ? 'active' : '') + '" data-p="' + i + '">' + i + '</a>';
+    }
+    if (state.page < pages) {
+      html += '<a href="#" data-p="' + (state.page + 1) + '"><i class="bi bi-chevron-right"></i></a>';
+    }
+    pagination.innerHTML = html;
+    pagination.querySelectorAll('a[data-p]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        state.page = parseInt(this.getAttribute('data-p'), 10);
+        renderGrid();
+        document.querySelector('.col-lg-8').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  }
+
+  /* --- RENDER CATEGORIES ----------------------------------------------- */
+  function renderCategories() {
+    var counts = {};
+    POSTS.forEach(function (p) { counts[p.category] = (counts[p.category] || 0) + 1; });
+    var cats = Object.keys(counts).sort();
+    var html = '<li class="all-cat"><a href="#" data-cat="All" class="'
+      + (state.category === 'All' ? 'active-cat' : '')
+      + '">All Articles</a><span>' + POSTS.length + '</span></li>';
+    cats.forEach(function (cat) {
+      html += '<li><a href="#" data-cat="' + esc(cat) + '" class="'
+        + (state.category === cat ? 'active-cat' : '')
+        + '">' + esc(cat) + '</a><span>' + counts[cat] + '</span></li>';
+    });
+    catList.innerHTML = html;
+    catList.querySelectorAll('a[data-cat]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        state.category = this.getAttribute('data-cat');
+        state.page = 1;
+        renderGrid();
+        renderCategories();
+      });
+    });
+  }
+
+  /* --- RENDER RECENT POSTS --------------------------------------------- */
+  function renderRecentPosts() {
+    var recent = POSTS.slice().sort(function (a, b) { return b.dateSort - a.dateSort; }).slice(0, 3);
+    var html = '';
+    recent.forEach(function (p, i) {
+      html += '<div class="sidebar-post' + (i === 2 ? ' mb-0' : '') + '">'
+        + '<img src="' + esc(p.img) + '" alt="' + esc(p.alt) + '" loading="lazy">'
+        + '<div><h6><a href="' + esc(p.url) + '">' + esc(p.title) + '</a></h6>'
+        + '<div class="date">' + esc(p.date) + '</div></div>'
+        + '</div>';
+    });
+    recentPosts.innerHTML = html;
+  }
+
+  /* --- GLOBAL CALLBACKS (used in onclick attrs) ------------------------ */
+  window.TMJ_filterCat = function (cat) {
+    state.category = cat;
+    state.page = 1;
+    renderGrid();
+    renderCategories();
+    document.querySelector('.col-lg-8').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+  window.TMJ_clearCat = function () {
+    state.category = 'All';
+    state.page = 1;
+    renderGrid();
+    renderCategories();
+  };
+
+  /* --- SEARCH WIRING --------------------------------------------------- */
+  var timer;
+  searchInput.addEventListener('input', function () {
+    clearTimeout(timer);
+    var val = this.value.trim();
+    clearBtn.style.display = val ? 'block' : 'none';
+    timer = setTimeout(function () {
+      state.query = val;
+      state.page = 1;
+      renderGrid();
+      renderCategories();
+    }, 220);
+  });
+  clearBtn.addEventListener('click', function () {
+    searchInput.value = '';
+    clearBtn.style.display = 'none';
+    state.query = '';
+    state.page = 1;
+    renderGrid();
+    renderCategories();
+    searchInput.focus();
+  });
+  emptyReset.addEventListener('click', function () {
+    state.category = 'All';
+    state.query = '';
+    state.page = 1;
+    searchInput.value = '';
+    clearBtn.style.display = 'none';
+    renderGrid();
+    renderCategories();
+  });
+
+  /* --- INIT ------------------------------------------------------------ */
+  renderGrid();
+  renderCategories();
+  renderRecentPosts();
+
+})();
+</script>
+</body>
+</html>

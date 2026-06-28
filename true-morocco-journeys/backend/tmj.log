@@ -1,0 +1,10 @@
+[2026-06-24 20:05:20] DEBUG api — Health check from 127.0.0.1
+[2026-06-24 20:07:09] DEBUG api — Health check from 127.0.0.1
+[2026-06-24 20:07:31] DEBUG api — Health check from 127.0.0.1
+[2026-06-24 20:07:31] DEBUG api — Health check from 127.0.0.1
+[2026-06-24 20:16:26] INFO api — Contact request | ip=127.0.0.1 | data={'name': 'Ahmed K.', 'email': 'ahmed@example.com', 'message': 'I would like to plan a 7-day Sahara tour for April.'}
+[2026-06-24 20:16:28] INFO api — Email sent | to=['blackbcat777@gmail.com'] | subject=New Contact Enquiry from Ahmed K.
+[2026-06-24 20:16:30] INFO api — Email sent | to=['ahmed@example.com'] | subject=We received your message — True Morocco Journeys
+[2026-06-24 20:16:30] INFO api — Contact processed successfully | ip=127.0.0.1 | email=ahmed@example.com
+[2026-06-24 20:45:28] DEBUG api — Health check from 127.0.0.1
+[2026-06-24 20:45:28] DEBUG api — Health check from 127.0.0.1

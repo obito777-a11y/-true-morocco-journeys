@@ -1,0 +1,68 @@
+2026-06-22 01:56:10,640 | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2026-06-22 01:56:10,641 | [33mPress CTRL+C to quit[0m
+2026-06-22 01:56:10,643 |  * Restarting with stat
+2026-06-22 01:56:11,078 |  * Debugger is active!
+2026-06-22 01:56:11,083 |  * Debugger PIN: 340-539-041
+2026-06-22 17:06:20,535 | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2026-06-22 17:06:20,536 | [33mPress CTRL+C to quit[0m
+2026-06-22 17:06:20,540 |  * Restarting with stat
+2026-06-22 17:06:21,223 |  * Debugger is active!
+2026-06-22 17:06:21,249 |  * Debugger PIN: 340-539-041
+2026-06-24 19:00:54,710 | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2026-06-24 19:00:54,710 | [33mPress CTRL+C to quit[0m
+2026-06-24 19:00:54,711 |  * Restarting with stat
+2026-06-24 19:00:54,910 |  * Debugger is active!
+2026-06-24 19:00:54,912 |  * Debugger PIN: 340-539-041
+2026-06-24 19:04:12,666 | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2026-06-24 19:04:12,666 | [33mPress CTRL+C to quit[0m
+2026-06-24 19:04:12,670 |  * Restarting with stat
+2026-06-24 19:04:13,673 |  * Debugger is active!
+2026-06-24 19:04:13,676 |  * Debugger PIN: 340-539-041
+2026-06-24 19:04:57,007 | 127.0.0.1 - - [24/Jun/2026 19:04:57] "OPTIONS /api/contact HTTP/1.1" 200 -
+2026-06-24 19:04:57,272 | Submission: {'name': 'Black cat', 'email': 'blackbcat777@gmail.com', 'phone': '', 'subject': 'Custom Itinerary Request', 'message': 'jawkw'}
+2026-06-24 19:04:57,276 | 127.0.0.1 - - [24/Jun/2026 19:04:57] "POST /api/contact HTTP/1.1" 200 -
+2026-06-24 19:08:58,161 |  * Detected change in 'C:\\Users\\ideapad pro 5i\\Downloads\\true-morocco-journeys\\true-morocco-journeys\\backend\\app.py', reloading
+2026-06-24 19:08:58,284 |  * Restarting with stat
+2026-06-24 19:08:58,425 |  * Detected change in 'C:\\Users\\ideapad pro 5i\\Downloads\\true-morocco-journeys\\true-morocco-journeys\\backend\\app.py', reloading
+2026-06-24 19:08:58,494 |  * Restarting with stat
+2026-06-24 19:08:58,796 |  * Debugger is active!
+2026-06-24 19:08:58,799 |  * Debugger PIN: 340-539-041
+2026-06-24 19:08:58,928 |  * Debugger is active!
+2026-06-24 19:08:58,932 |  * Debugger PIN: 340-539-041
+2026-06-24 19:09:28,974 |  * Detected change in 'C:\\Users\\ideapad pro 5i\\Downloads\\true-morocco-journeys\\true-morocco-journeys\\backend\\app.py', reloading
+2026-06-24 19:09:29,085 |  * Restarting with stat
+2026-06-24 19:09:29,102 |  * Detected change in 'C:\\Users\\ideapad pro 5i\\Downloads\\true-morocco-journeys\\true-morocco-journeys\\backend\\app.py', reloading
+2026-06-24 19:09:29,166 |  * Restarting with stat
+2026-06-24 19:09:29,519 |  * Debugger is active!
+2026-06-24 19:09:29,522 |  * Debugger PIN: 340-539-041
+2026-06-24 19:09:29,575 |  * Debugger is active!
+2026-06-24 19:09:29,577 |  * Debugger PIN: 340-539-041
+2026-06-24 19:09:32,595 |  * Detected change in 'C:\\Users\\ideapad pro 5i\\Downloads\\true-morocco-journeys\\true-morocco-journeys\\backend\\app.py', reloading
+2026-06-24 19:09:32,686 |  * Restarting with stat
+2026-06-24 19:09:33,195 |  * Debugger is active!
+2026-06-24 19:09:33,197 |  * Debugger PIN: 340-539-041
+2026-06-24 19:09:33,544 |  * Detected change in 'C:\\Users\\ideapad pro 5i\\Downloads\\true-morocco-journeys\\true-morocco-journeys\\backend\\app.py', reloading
+2026-06-24 19:09:33,633 |  * Restarting with stat
+2026-06-24 19:09:34,065 |  * Debugger is active!
+2026-06-24 19:09:34,068 |  * Debugger PIN: 340-539-041
+2026-06-24 19:09:45,950 | 127.0.0.1 - - [24/Jun/2026 19:09:45] "OPTIONS /api/contact HTTP/1.1" 200 -
+2026-06-24 19:09:46,197 | Submission: {'name': 'Black cat', 'email': 'blackbcat777@gmail.com', 'phone': '', 'subject': 'Custom Itinerary Request', 'message': 'w wn n'}
+2026-06-24 19:09:46,198 | 127.0.0.1 - - [24/Jun/2026 19:09:46] "POST /api/contact HTTP/1.1" 200 -
+2026-06-24 19:10:02,460 | 127.0.0.1 - - [24/Jun/2026 19:10:02] "OPTIONS /api/contact HTTP/1.1" 200 -
+2026-06-24 19:10:02,778 | Submission: {'name': 'Black cat', 'email': 'blackbcat777@gmail.com', 'phone': '', 'subject': 'Custom Itinerary Request', 'message': 'a sjs'}
+2026-06-24 19:10:02,779 | 127.0.0.1 - - [24/Jun/2026 19:10:02] "POST /api/contact HTTP/1.1" 200 -
+2026-06-24 19:10:48,435 |  * Detected change in 'C:\\Users\\ideapad pro 5i\\Downloads\\true-morocco-journeys\\true-morocco-journeys\\backend\\app.py', reloading
+2026-06-24 19:10:48,518 |  * Restarting with stat
+2026-06-24 19:10:48,568 |  * Detected change in 'C:\\Users\\ideapad pro 5i\\Downloads\\true-morocco-journeys\\true-morocco-journeys\\backend\\app.py', reloading
+2026-06-24 19:10:48,657 |  * Restarting with stat
+2026-06-24 19:10:49,129 |  * Debugger is active!
+2026-06-24 19:10:49,134 |  * Debugger PIN: 340-539-041
+2026-06-24 19:10:49,231 |  * Debugger is active!
+2026-06-24 19:10:49,236 |  * Debugger PIN: 340-539-041
+2026-06-24 19:13:32,451 | 127.0.0.1 - - [24/Jun/2026 19:13:32] "OPTIONS /api/contact HTTP/1.1" 200 -
+2026-06-24 19:13:32,711 | Submission: {'name': 'Black cat', 'email': 'blackbcat777@gmail.com', 'phone': '', 'subject': 'Group / Corporate Travel', 'message': 'lefmpefvpk'}
+2026-06-24 19:13:32,713 | 127.0.0.1 - - [24/Jun/2026 19:13:32] "POST /api/contact HTTP/1.1" 200 -
